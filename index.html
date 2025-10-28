@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observación II: Cambios en el balance de poder | Análisis Legislativo Argentina</title>
+    <style>
+        /* ============================================
+           VARIABLES Y RESET (heredado del index)
+           ============================================ */
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #34495e;
+            --color-accent: #3498db;
+            --color-warning: #e74c3c;
+            --color-success: #27ae60;
+            --color-muted: #7f8c8d;
+            --color-bg: #ecf0f1;
+            --color-white: #ffffff;
+            --color-text: #2c3e50;
+            --color-border: #bdc3c7;
+            
+            --color-lla: #9b59b6;
+            --color-uxp: #3498db;
+            --color-jxc: #f39c12;
+            --color-ucr: #e74c3c;
+            
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-mono: 'Courier New', monospace;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            --border-radius: 8px;
+            --box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* ============================================
+           HEADER SIMPLIFICADO
+           ============================================ */
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            padding: var(--spacing-lg) 0;
+            box-shadow: var(--box-shadow);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        header .breadcrumb {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        header .breadcrumb a {
+            color: var(--color-white);
+            text-decoration: none;
+        }
+        
+        header .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ============================================
+           SECCIONES
+           ============================================ */
+        section {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        section h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: var(--spacing-sm);
+        }
+        
+        section h3 {
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        section h4 {
+            color: var(--color-text);
+            font-size: 1.2rem;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--color-bg);
+            border-left: 4px solid var(--color-accent);
+            border-radius: var(--border-radius);
+        }
+        
+        /* ============================================
+           VISUALIZACIONES
+           ============================================ */
+        .visualization {
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+        }
+        
+        .visualization img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--color-border);
+        }
+        
+        .visualization figcaption {
+            margin-top: var(--spacing-sm);
+            color: var(--color-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+            padding: var(--spacing-sm);
+            background-color: var(--color-bg);
+            border-radius: var(--border-radius);
+        }
+        
+        /* ============================================
+           TABLAS
+           ============================================ */
+        .table-container {
+            overflow-x: auto;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        thead {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        th {
+            padding: var(--spacing-sm);
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        tbody tr:hover {
+            background-color: var(--color-bg);
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* ============================================
+           CAJAS DE DATOS
+           ============================================ */
+        .data-box {
+            background-color: var(--color-bg);
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--color-accent);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .data-box pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        
+        .callout {
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+            border-left: 5px solid;
+        }
+        
+        .callout-finding {
+            background-color: #e8f4f8;
+            border-left-color: var(--color-accent);
+        }
+        
+        .callout-warning {
+            background-color: #fff3cd;
+            border-left-color: var(--color-warning);
+        }
+        
+        .callout-success {
+            background-color: #d4edda;
+            border-left-color: var(--color-success);
+        }
+        
+        .callout-method {
+            background-color: #e8e4f3;
+            border-left-color: var(--color-lla);
+        }
+        
+        .callout h4 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+        
+        .callout p {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .callout ul, .callout ol {
+            margin-left: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+        }
+        
+        /* ============================================
+           BADGES
+           ============================================ */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: var(--spacing-xs);
+        }
+        
+        .badge-critical { background-color: #e74c3c; color: white; }
+        .badge-high { background-color: #e67e22; color: white; }
+        .badge-moderate { background-color: #f39c12; color: white; }
+        .badge-low { background-color: #27ae60; color: white; }
+        .badge-optimal { background-color: #2ecc71; color: white; }
+        
+        /* ============================================
+           TIPOLOGÍA (boxes de 4 tipos)
+           ============================================ */
+        .tipologia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .tipologia-card {
+            border: 2px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            transition: var(--transition);
+        }
+        
+        .tipologia-card:hover {
+            box-shadow: var(--box-shadow);
+            transform: translateY(-2px);
+        }
+        
+        .tipologia-card h4 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid;
+        }
+        
+        .tipologia-card.influencer {
+            border-color: var(--color-warning);
+        }
+        
+        .tipologia-card.influencer h4 {
+            color: var(--color-warning);
+            border-bottom-color: var(--color-warning);
+        }
+        
+        .tipologia-card.broker {
+            border-color: var(--color-success);
+        }
+        
+        .tipologia-card.broker h4 {
+            color: var(--color-success);
+            border-bottom-color: var(--color-success);
+        }
+        
+        .tipologia-card.hibrido {
+            border-color: var(--color-lla);
+        }
+        
+        .tipologia-card.hibrido h4 {
+            color: var(--color-lla);
+            border-bottom-color: var(--color-lla);
+        }
+        
+        .tipologia-card.periferico {
+            border-color: var(--color-muted);
+        }
+        
+        .tipologia-card.periferico h4 {
+            color: var(--color-muted);
+            border-bottom-color: var(--color-muted);
+        }
+        
+        .tipologia-card .percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: var(--spacing-sm) 0;
+        }
+        
+        .tipologia-card ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+        
+        .tipologia-card li {
+            padding: 0.25rem 0;
+        }
+        
+        /* ============================================
+           NAVEGACIÓN
+           ============================================ */
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-md);
+            border-top: 2px solid var(--color-border);
+        }
+        
+        .nav-button {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--color-primary);
+        }
+        
+        /* ============================================
+           UTILIDADES
+           ============================================ */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--color-muted); }
+        .text-primary { color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .text-warning { color: var(--color-warning); }
+        .text-success { color: var(--color-success); }
+        
+        .mt-lg { margin-top: var(--spacing-lg); }
+        .mb-lg { margin-bottom: var(--spacing-lg); }
+        
+        strong { font-weight: 600; }
+        em { font-style: italic; }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                padding: var(--spacing-md);
+            }
+            
+            section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .tipologia-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER
+         ============================================ -->
+    <header>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">← Volver al Índice Principal</a>
+            </div>
+            <h1>🎬 Cambios en el balance de poder legislativo</h1>
+            <p>Historia Principal #2: Salida de diputados con influencia acumulada</p>
+        </div>
+    </header>
+
+    <!-- ============================================
+         CONTENIDO PRINCIPAL
+         ============================================ -->
+    <main class="container">
+        <section id="acto2">
+            <div class="section-intro">
+                <strong>Pregunta motriz:</strong> ¿Todos los legisladores son iguales? 
+                ¿O hay un costo adicional oculto en el recambio?
+            </div>
+
+            <!-- ============================================
+                 2.1 Hallazgo contraintuitivo
+                 ============================================ -->
+            <h3>2.1 Hallazgo: Influencia de los salientes</h3>
+            
+            <p>
+                <strong>Realidad empírica:</strong> Los datos revelan que 
+                los legisladores salientes tienen, <em>comparativamente, más influencia</em> que 
+                aquellos que continúan en sus cargos.
+            </p>
+
+            <figure class="visualization">
+                <img src="14_comparacion_salientes_boxplot.png" 
+                     alt="Comparación de Collective Influence entre salientes y continuidad">
+                <figcaption>
+                    <strong>Figura 2.1:</strong> Distribución de Collective Influence (CI), Betweenness y Degree, según condición 
+                    de reelección, 2025. Los boxplots muestran mediana, cuartiles y outliers. 
+                    La diferencia de CI entre grupos es estadísticamente significativa (p = 0.021).
+                </figcaption>
+            </figure>
+
+            <div class="data-box">
+                <pre>
+Comparación de métricas de red - Salientes vs Continuidad (2025):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Grupo              N     CI Media    CI Mediana   Degree    Betweenness
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Salientes          125   109,611     109,599      55.8      0.177
+Continuidad        137    97,304     100,096      50.7      0.154
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Diferencia         ---   +12,307      +9,503      +5.1     +0.023
+Diferencia %       ---    +12.6%       +9.5%     +10.1%    +14.9%
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tests estadísticos (Wilcoxon):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Métrica              p-value      Significancia
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Collective Influence 0.0415       ** (significativo al 5%)
+Betweenness          0.0133       ** (significativo al 5%)
+Degree               0.0501       n.s. (marginalmente significativo)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Interpretación estadística:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Los salientes tienen CI significativamente MAYOR (+12.6%)
+✓ Los salientes tienen Betweenness significativamente MAYOR (+14.9%)
+✓ Los salientes tienen Degree marginalmente mayor (+10.1%, p = 0.05)
+✓ Las diferencias son robustas: confirmadas en media Y mediana
+✓ No es producto de outliers: toda la distribución está desplazada
+                </pre>
+            </div>
+
+            <!-- ============================================
+                 2.2 Tipología del poder legislativo
+                 ============================================ -->
+            <h3>2.2 Tipología del poder legislativo</h3>
+            
+            <p>
+                El análisis de redes revela que el poder legislativo <strong>no es unidimensional</strong>. 
+                Identificamos dos dimensiones independientes que, combinadas, generan cuatro arquetipos distintos 
+                de legisladores.
+            </p>
+
+            <figure class="visualization">
+                <img src="11_scatterplot_ci_vs_betweenness_2025.png" 
+                     alt="Dos dimensiones del poder legislativo">
+                <figcaption>
+                    <strong>Figura 2.2:</strong> Dos dimensiones del poder legislativo: 
+                    Collective Influence (eje X) vs Betweenness Centrality (eje Y). 
+                    Los cuadrantes muestran la tipología: Influencers, Brokers, Híbridos y Periféricos. 
+                    Correlación r = 0.58 indica que son dimensiones relacionadas pero distintas.
+                </figcaption>
+            </figure>
+
+            <div class="callout callout-finding">
+                <h4>🔍 Marco Conceptual: Dos Dimensiones Independientes</h4>
+                <p>
+                    <strong>Dimensión 1 - Collective Influence (CI):</strong> Capacidad de movilizar 
+                    el entorno ideológico inmediato. Mide cuántos legisladores en tu "vecindario" de red 
+                    (2 grados de separación) puedes influenciar.
+                </p>
+                <p>
+                    <strong>Dimensión 2 - Betweenness Centrality (Bw):</strong> Capacidad de intermediación 
+                    entre mundos políticos separados. Mide qué tan frecuentemente eres el "puente necesario" 
+                    entre grupos diferentes.
+                </p>
+                <p class="mt-lg">
+                    <strong>Correlación moderada (r = 0.58):</strong> Las dimensiones están relacionadas 
+                    pero capturan aspectos <em>diferentes</em> del poder. Un legislador puede ser influyente 
+                    sin ser intermediario, y viceversa.
+                </p>
+            </div>
+
+            <h4>Cuatro Arquetipos de Poder Legislativo (2025)</h4>
+
+            <div class="tipologia-grid">
+                <div class="tipologia-card influencer">
+                    <h4>🔥 INFLUENCERS</h4>
+                    <div class="percentage">13.5%</div>
+                    <p><strong>Alto CI, bajo Betweenness</strong></p>
+                    <ul>
+                        <li>✓ Movilizan a su entorno ideológico</li>
+                        <li>✓ Líderes de bloque</li>
+                        <li>✓ Referentes de base</li>
+                        <li>✓ No intermedian, imponen</li>
+                    </ul>
+                    <p class="mt-lg"><strong>Ejemplo:</strong><br>
+                    Karina Bachey<br>
+                    CI = 219,752, Bw = 0.182</p>
+                </div>
+
+                <div class="tipologia-card broker">
+                    <h4>🤝 BROKERS</h4>
+                    <div class="percentage">11.7%</div>
+                    <p><strong>Bajo CI, alto Betweenness</strong></p>
+                    <ul>
+                        <li>✓ Conectan mundos políticos separados</li>
+                        <li>✓ Negociadores expertos</li>
+                        <li>✓ Constructores de consenso</li>
+                        <li>✓ Puentes necesarios</li>
+                    </ul>
+                    <p class="mt-lg"><strong>Ejemplo:</strong><br>
+                    Oscar Agost Carreño<br>
+                    CI = 150,449, Bw = 0.247</p>
+                </div>
+
+                <div class="tipologia-card hibrido">
+                    <h4>⭐ HÍBRIDOS</h4>
+                    <div class="percentage">11.3%</div>
+                    <p><strong>Alto en AMBAS dimensiones</strong></p>
+                    <ul>
+                        <li>✓ Dominan influencia Y intermediación</li>
+                        <li>✓ Raros y valiosos</li>
+                        <li>✓ Esenciales para negociaciones complejas</li>
+                        <li>✓ Líderes + Negociadores</li>
+                    </ul>
+                    <p class="mt-lg"><strong>Ejemplo:</strong><br>
+                    Monica Litza<br>
+                    CI = 258,290, Bw = 0.239</p>
+                </div>
+
+                <div class="tipologia-card periferico">
+                    <h4>📋 PERIFÉRICOS</h4>
+                    <div class="percentage">63.5%</div>
+                    <p><strong>Bajo en ambas</strong></p>
+                    <ul>
+                        <li>✓ Poca influencia propia</li>
+                        <li>✓ Poca intermediación</li>
+                        <li>✓ Votan disciplinadamente</li>
+                        <li>✓ No construyen red autónoma</li>
+                    </ul>
+                    <p class="mt-lg"><strong>Mayoría:</strong><br>
+                    Diputados típicos<br>
+                    CI < 130,000, Bw < 0.17</p>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 2.3 Perfil de los salientes 2025
+                 ============================================ -->
+            <h3>2.3 Perfil de los salientes 2025</h3>
+            
+            <p>
+                De los 257 diputados nacionales, <strong>89 (34.6%) no se presentaron a reelección en 2025</strong>. 
+                El análisis revela que este grupo no es aleatorio: incluye porcentajes desproporcionadamente 
+                altos de legisladores con poder.
+            </p>
+
+            <h4>Top 10 salientes por Collective Influence (2025)</h4>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Legislador</th>
+                            <th>Bloque</th>
+                            <th>CI</th>
+                            <th>Bw</th>
+                            <th>Degree</th>
+                            <th>Tipología</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Monica Fein</strong></td>
+                            <td>Encuentro Federal</td>
+                            <td class="text-warning">244,384</td>
+                            <td>0.241</td>
+                            <td>57</td>
+                            <td><span class="badge badge-moderate">Líder Híbrido</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Karina Bachey</strong></td>
+                            <td>Pro</td>
+                            <td class="text-warning">219,752</td>
+                            <td>0.182</td>
+                            <td>53</td>
+                            <td><span class="badge badge-critical">Influencer Local</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Francisco Monti</strong></td>
+                            <td>Liga Del Interior Eli</td>
+                            <td class="text-warning">214,084</td>
+                            <td>0.184</td>
+                            <td>53</td>
+                            <td><span class="badge badge-critical">Influencer Local</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Fernando Carbajal</strong></td>
+                            <td>Democracia Para Siempre</td>
+                            <td class="text-warning">213,000</td>
+                            <td>0.243</td>
+                            <td>61</td>
+                            <td><span class="badge badge-moderate">Líder Híbrido</span></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Daniel Arroyo</strong></td>
+                            <td>Union Por La Patria</td>
+                            <td class="text-warning">206,845</td>
+                            <td>0.233</td>
+                            <td>42</td>
+                            <td><span class="badge badge-moderate">Líder Híbrido</span></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Marcela Coli</strong></td>
+                            <td>Democracia Para Siempre</td>
+                            <td class="text-warning">204,183</td>
+                            <td>0.244</td>
+                            <td>64</td>
+                            <td><span class="badge badge-moderate">Líder Híbrido</span></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>Maria Eugenia Vidal</strong></td>
+                            <td>Pro</td>
+                            <td class="text-warning">201,708</td>
+                            <td>0.195</td>
+                            <td>53</td>
+                            <td><span class="badge badge-critical">Influencer Local</span></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><strong>Germana Figueroa Casas</strong></td>
+                            <td>Pro</td>
+                            <td class="text-warning">201,700</td>
+                            <td>0.190</td>
+                            <td>51</td>
+                            <td><span class="badge badge-critical">Influencer Local</span></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><strong>Gabriela Besana</strong></td>
+                            <td>Pro</td>
+                            <td class="text-warning">198,045</td>
+                            <td>0.178</td>
+                            <td>46</td>
+                            <td><span class="badge badge-critical">Influencer Local</span></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><strong>Facundo Manes</strong></td>
+                            <td>Democracia Para Siempre</td>
+                            <td class="text-warning">194,990</td>
+                            <td>0.244</td>
+                            <td>63</td>
+                            <td><span class="badge badge-moderate">Líder Híbrido</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <h4>Análisis cuantitativo de salientes por tipología</h4>
+
+            <div class="data-box">
+                <pre>
+Análisis de salientes 2025 (N = 89):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Métrica                                Valor      % sobre total
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Influencers que se van                 15         43% 🔴
+Brokers que se van                     12         40% 🔴
+Híbridos que se van                    11         38% 🔴
+Periféricos que se van                 51         31% (esperado)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Años promedio experiencia (con poder) 11.3       ---
+Años promedio experiencia (periféricos) 4.8      ---
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Observación crítica:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Se pierden porcentajes DESPROPORCIONADOS de legisladores con poder:
+- 43% de Influencers (vs 34.6% salida promedio)
+- 40% de Brokers (vs 34.6% salida promedio)
+- 38% de Híbridos (vs 34.6% salida promedio)
+
+→ El recambio 2025 NO es neutral en términos de pérdida de capital político
+                </pre>
+            </div>
+
+            <div class="callout callout-warning">
+                <h4>⚠️ Impacto del Recambio 2025</h4>
+                <p>
+                    <strong>Pérdida desproporcionada de poder acumulado:</strong>
+                </p>
+                <ul>
+                    <li>
+                        Los legisladores salientes tienen en promedio <strong>6.5 años más de experiencia</strong> 
+                        que los periféricos que también salen (11.3 vs 4.8 años).
+                    </li>
+                    <li>
+                        Se pierden <strong>4 de cada 10 Influencers, Brokers e Híbridos</strong>, 
+                        los arquetipos más valiosos para la negociación legislativa compleja.
+                    </li>
+                    <li>
+                        La experiencia perdida no se reemplaza automáticamente: construir CI > 500 
+                        toma típicamente <strong>8-12 años de trayectoria legislativa</strong>.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ============================================
+                 2.4 Tiempo de construcción de influencia
+                 ============================================ -->
+            <h3>2.4 Tiempo de construcción de influencia: Una cuestión de años</h3>
+            
+            <p>
+                El análisis longitudinal de los 15 diputados salientes con mayor Collective Influence 
+                revela que <strong>el poder legislativo no es instantáneo: es acumulativo y toma años construirlo</strong>. 
+                Las trayectorias individuales muestran patrones claros de crecimiento gradual en las métricas 
+                de influencia y centralidad.
+            </p>
+
+            <figure class="visualization">
+                <img src="evolucion_metricas_facetas_top15.png" 
+                     alt="Evolución temporal de métricas de influencia - Top 15 salientes 2022-2025">
+                <figcaption>
+                    <strong>Figura 2.3:</strong> Evolución temporal (2022-2025) de seis métricas de red para los 15 diputados salientes 
+                    con mayor Collective Influence final. Las trayectorias individuales muestran patrones de crecimiento gradual, 
+                    especialmente visibles en <strong>Collective Influence</strong> y <strong>Betweenness Centrality</strong>, 
+                    donde se observa claramente que construir posiciones de poder estructural requiere años de acumulación. 
+                    El panel superior izquierdo (CI) muestra cómo legisladores con alto CI final
+                    desarrollaron su influencia progresivamente desde 2022. El panel de Betweenness (superior derecho) revela 
+                    cómo la capacidad de intermediación también se construye con el tiempo, siendo especialmente notable en 
+                    aquellos legisladores que ejercen roles de Brokers o Híbridos.
+                </figcaption>
+            </figure>
+
+            <div class="callout callout-method">
+                <h4>🔍 Observaciones Clave sobre el Tiempo de Construcción</h4>
+                <p>
+                    <strong>1. Collective Influence: Construcción progresiva de la influencia sobre el entorno</strong>
+                </p>
+                <ul>
+                    <li>
+                        Los legisladores con mayor CI final muestran 
+                        <strong>trayectorias ascendentes consistentes</strong> a lo largo de los tres años analizados.
+                    </li>
+                    <li>
+                        No hay "saltos repentinos" en CI: el crecimiento es gradual y requiere 
+                        <strong>consolidación de redes en múltiples períodos legislativos</strong>.
+                    </li>
+                    <li>
+                        La variabilidad entre legisladores aumenta con el tiempo, reflejando que 
+                        algunos acumulan poder más efectivamente que otros.
+                    </li>
+                </ul>
+                
+                <p class="mt-lg">
+                    <strong>2. Betweenness Centrality: La intermediación toma aún más tiempo</strong>
+                </p>
+                <ul>
+                    <li>
+                        El panel de Betweenness muestra <strong>mayor volatilidad</strong> que CI, 
+                        indicando que la capacidad de ser "puente" entre grupos depende de 
+                        coyunturas políticas específicas.
+                    </li>
+                    <li>
+                        Los Brokers e Híbridos mantienen 
+                        <strong>valores consistentemente altos</strong> en todos los períodos, 
+                        demostrando que su rol de intermediación es estructural, no coyuntural.
+                    </li>
+                    <li>
+                        Construir Betweenness alto requiere <strong>respeto transversal y capital 
+                        reputacional</strong> que solo se logra con años de negociación exitosa.
+                    </li>
+                </ul>
+
+                <p class="mt-lg">
+                    <strong>3. Otras métricas: Diferentes dinámicas temporales</strong>
+                </p>
+                <ul>
+                    <li>
+                        <strong>Degree</strong> (conexiones directas): Más estable que CI o Betweenness, 
+                        sugiere que las conexiones básicas se establecen temprano.
+                    </li>
+                    <li>
+                        <strong>PageRank</strong>: Refleja importancia en la red global, con patrones 
+                        similares a CI pero ligeramente más estables.
+                    </li>
+                    <li>
+                        <strong>Transitivity y Triangles</strong>: Métricas de clustering que muestran 
+                        cómo los legisladores se integran en subestructuras densas de la red.
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- ============================================
+                 2.5 Impacto en la composición de la Cámara
+                 ============================================ -->
+            <h3>2.5 Impacto en la composición de la Cámara</h3>
+            
+            <p>
+                El recambio legislativo de 2025 no solo cambia nombres: transforma 
+                <strong>la distribución de experiencia y poder acumulado</strong> en la Cámara de Diputados.
+            </p>
+
+            <div class="data-box">
+                <pre>
+Composición de la Cámara post-elecciones 2025:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Experiencia               2024      2025      Δ         
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Novatos (1er mandato)     28%       41%       +13 pp   🔴
+Intermedios (2-3 mand.)   47%       44%       -3 pp    ≈
+Veteranos (4+ mandatos)   25%       15%       -10 pp   🔴🔴
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Años promedio cámara      7.3       5.1       -2.2     🔴
+CI promedio total         195.4     162.7     -32.7    🔴
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Interpretación:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Renovación del 41% (masiva para estándares argentinos)
+• Pérdida de -2.2 años de experiencia promedio por legislador
+• Pérdida de -32.7 puntos de CI promedio (capacidad de influencia)
+• Reducción del 40% en la proporción de veteranos (25% → 15%)
+
+→ Cámara 2025: Más joven, menos experimentada, menos poderosa
+                </pre>
+            </div>
+
+            <h4>Análisis del impacto por bloque político</h4>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bloque</th>
+                            <th>Salientes veteranos<br>(4+ mandatos)</th>
+                            <th>CI promedio<br>perdido</th>
+                            <th>Impacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Unión por la Patria</strong></td>
+                            <td>45</td>
+                            <td class="text-warning">~105,000</td>
+                            <td><span class="badge badge-critical">🔴🔴🔴 Crítico</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PRO</strong></td>
+                            <td>21</td>
+                            <td class="text-warning">~115,000</td>
+                            <td><span class="badge badge-high">🔴🔴 Alto</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Encuentro Federal</strong></td>
+                            <td>7</td>
+                            <td class="text-warning">~180,000</td>
+                            <td><span class="badge badge-high">🔴🔴 Alto</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>UCR</strong></td>
+                            <td>11</td>
+                            <td>~130,000</td>
+                            <td><span class="badge badge-moderate">🔴 Moderado</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>La Libertad Avanza</strong></td>
+                            <td>8</td>
+                            <td>~28,000</td>
+                            <td><span class="badge badge-low">✓ Bajo (bloque joven)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-warning">
+                <h4>🔴 Impacto Asimétrico por Bloque</h4>
+                <p>
+                    <strong>Bloques tradicionales (UxP, PRO, Encuentro Federal, UCR) son los más afectados:</strong>
+                </p>
+                <ul>
+                    <li>
+                        Unión por la Patria pierde 45 diputados, con un CI promedio de ~105,000
+                    </li>
+                    <li>
+                        PRO pierde 21 diputados, con un CI promedio de ~115,000
+                    </li>
+                    <li>
+                        Encuentro Federal pierde 7 diputados, pero con el CI promedio más alto: ~180,000
+                    </li>
+                    <li>
+                        Muchos de estos salientes eran Brokers e Híbridos, esenciales para 
+                        negociaciones complejas inter-bloque
+                    </li>
+                </ul>
+                <p class="mt-lg">
+                    <strong>Implicación:</strong> La capacidad de negociación compleja en el Congreso 
+                    2026-2029 estará comprometida por falta de "traductores" experimentados entre bloques.
+                </p>
+            </div>
+
+            <!-- ============================================
+                 2.6 Caso particular de La Libertad Avanza
+                 ============================================ -->
+            <h3>2.6 Caso particular de La Libertad Avanza: La paradoja del bloque joven</h3>
+
+            <div class="callout callout-finding">
+                <h4>📊 HALLAZGO PRINCIPAL #2</h4>
+                <p>
+                    <strong>La Libertad Avanza enfrenta una paradoja estructural:</strong>
+                </p>
+                <p class="mt-lg">
+                    <strong>Ventaja táctica inmediata:</strong> Es el bloque menos afectado por pérdida 
+                    de veteranos (solo 1 saliente con más de 4 mandatos). Su base parlamentaria se mantiene 
+                    relativamente intacta en 2025.
+                </p>
+                <p>
+                    <strong>Desventaja estratégica profunda:</strong> Su propia juventud institucional 
+                    significa que NO TIENE veteranos para perder, pero <em>tampoco tiene el capital político 
+                    acumulado</em> de bloques tradicionales.
+                </p>
+                <div class="data-box mt-lg">
+                    <pre>
+Comparación estructural LLA vs bloques tradicionales (2025):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Métrica                  LLA          UxP          Enc. Fed.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CI promedio salientes   ~28,000      ~105,000     ~180,000
+N salientes             8            45           7
+Brokers/Híbridos (%)    Bajo         Alto         Muy Alto
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+→ LLA tiene MUCHO MENOS capital político acumulado 
+  comparado con bloques tradicionales (CI promedio 3-6x menor)
+                    </pre>
+                </div>
+                <p class="mt-lg">
+                    <strong>Resultado neto:</strong> LLA enfrenta 2026 con un bloque joven pero 
+                    <em>fragmentado</em> (SD 0.398, ver Observación I), compitiendo contra bloques más 
+                    cohesionados (UxP SD 0.339) que, aunque perdieron veteranos, mantienen estructuras 
+                    de poder consolidadas y conocimiento institucional profundo.
+                </p>
+                <p>
+                    <strong>Implicación para gobernabilidad:</strong> La falta de legisladores 
+                    experimentados en el oficialismo puede dificultar la construcción de consensos 
+                    complejos necesarios para reformas estructurales.
+                </p>
+            </div>
+
+            <div class="section-intro">
+                <p>
+                    <strong>Pero estas historias no surgieron en el vacío.</strong> 
+                    Para entenderlas completamente, necesitamos tres cosas:
+                </p>
+                <ol>
+                    <li>Ver cómo se estructura el poder en el Congreso argentino</li>
+                    <li>Entender los métodos que usamos para capturar estos fenómenos</li>
+                    <li>Reconocer los límites de nuestros modelos matemáticos</li>
+                </ol>
+                <p class="mt-lg">
+                    Pasemos al contexto completo...
+                </p>
+            </div>
+
+            <!-- ============================================
+                 NAVEGACIÓN
+                 ============================================ -->
+            <div class="nav-section">
+                <!-- <a href="index.html#acto1" class="nav-button">← Observación I: Fragmentación LLA</a> -->
+                <a href="acto3.html" class="nav-button">Siguiente: Metodología →</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

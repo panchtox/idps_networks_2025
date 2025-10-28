@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contexto y Metodología | Análisis Legislativo Argentina</title>
+    <style>
+        /* ============================================
+           VARIABLES Y RESET (heredado)
+           ============================================ */
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #34495e;
+            --color-accent: #3498db;
+            --color-warning: #e74c3c;
+            --color-success: #27ae60;
+            --color-muted: #7f8c8d;
+            --color-bg: #ecf0f1;
+            --color-white: #ffffff;
+            --color-text: #2c3e50;
+            --color-border: #bdc3c7;
+            
+            --color-lla: #9b59b6;
+            --color-uxp: #3498db;
+            --color-jxc: #f39c12;
+            --color-ucr: #e74c3c;
+            
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-mono: 'Courier New', monospace;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            --border-radius: 8px;
+            --box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* ============================================
+           HEADER
+           ============================================ */
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            padding: var(--spacing-lg) 0;
+            box-shadow: var(--box-shadow);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        header .breadcrumb {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        header .breadcrumb a {
+            color: var(--color-white);
+            text-decoration: none;
+        }
+        
+        header .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ============================================
+           SECCIONES
+           ============================================ */
+        section {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        section h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: var(--spacing-sm);
+        }
+        
+        section h3 {
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        section h4 {
+            color: var(--color-text);
+            font-size: 1.2rem;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--color-bg);
+            border-left: 4px solid var(--color-accent);
+            border-radius: var(--border-radius);
+        }
+        
+        /* ============================================
+           VISUALIZACIONES
+           ============================================ */
+        .visualization {
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+        }
+        
+        .visualization img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--color-border);
+        }
+        
+        .visualization figcaption {
+            margin-top: var(--spacing-sm);
+            color: var(--color-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+            padding: var(--spacing-sm);
+            background-color: var(--color-bg);
+            border-radius: var(--border-radius);
+        }
+        
+        /* ============================================
+           TABLAS
+           ============================================ */
+        .table-container {
+            overflow-x: auto;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        thead {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        th {
+            padding: var(--spacing-sm);
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        tbody tr:hover {
+            background-color: var(--color-bg);
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* ============================================
+           CAJAS DE DATOS
+           ============================================ */
+        .data-box {
+            background-color: var(--color-bg);
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--color-accent);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .data-box pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        
+        .callout {
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+            border-left: 5px solid;
+        }
+        
+        .callout-finding {
+            background-color: #e8f4f8;
+            border-left-color: var(--color-accent);
+        }
+        
+        .callout-warning {
+            background-color: #fff3cd;
+            border-left-color: var(--color-warning);
+        }
+        
+        .callout-success {
+            background-color: #d4edda;
+            border-left-color: var(--color-success);
+        }
+        
+        .callout-method {
+            background-color: #e8e4f3;
+            border-left-color: var(--color-lla);
+        }
+        
+        .callout h4 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+        
+        .callout p {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .callout ul, .callout ol {
+            margin-left: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+        }
+        
+        /* ============================================
+           MÉTODO CARDS (para explicar IRT, SNA, PCA)
+           ============================================ */
+        .method-card {
+            background-color: var(--color-white);
+            border: 2px solid var(--color-accent);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .method-card h4 {
+            color: var(--color-accent);
+            margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--color-accent);
+        }
+        
+        .method-card .concept {
+            background-color: #e8f4f8;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .method-card .advantages {
+            background-color: #d4edda;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-md);
+        }
+        
+        .method-card .limitations {
+            background-color: #fff3cd;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-md);
+        }
+        
+        .method-card .advantages h5,
+        .method-card .limitations h5 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+        }
+        
+        .method-card ul {
+            margin-left: var(--spacing-md);
+        }
+        
+        /* ============================================
+           BADGES
+           ============================================ */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: var(--spacing-xs);
+        }
+        
+        .badge-critical { background-color: #e74c3c; color: white; }
+        .badge-high { background-color: #e67e22; color: white; }
+        .badge-moderate { background-color: #f39c12; color: white; }
+        .badge-low { background-color: #27ae60; color: white; }
+        .badge-optimal { background-color: #2ecc71; color: white; }
+        
+        /* ============================================
+           NAVEGACIÓN
+           ============================================ */
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-md);
+            border-top: 2px solid var(--color-border);
+        }
+        
+        .nav-button {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--color-primary);
+        }
+        
+        /* ============================================
+           UTILIDADES
+           ============================================ */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--color-muted); }
+        .text-primary { color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .text-warning { color: var(--color-warning); }
+        .text-success { color: var(--color-success); }
+        
+        .mt-lg { margin-top: var(--spacing-lg); }
+        .mb-lg { margin-bottom: var(--spacing-lg); }
+        
+        strong { font-weight: 600; }
+        em { font-style: italic; }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                padding: var(--spacing-md);
+            }
+            
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER
+         ============================================ -->
+    <header>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">← Volver al Índice Principal</a>
+            </div>
+            <h1>🎬 Contexto y Metodología</h1>
+            <p>Estructura del poder, métodos y hallazgos complementarios</p>
+        </div>
+    </header>
+
+    <!-- ============================================
+         CONTENIDO PRINCIPAL
+         ============================================ -->
+    <main class="container">
+        <section id="acto3">
+            <div class="section-intro">
+                <strong>Objetivo:</strong> Proveer el contexto metodológico completo y los hallazgos 
+                complementarios que sustentan las dos historias principales (Actos I y II).
+            </div>
+
+            <!-- ============================================
+                 3.1 ESTRUCTURA DEL PODER CONGRESIONAL
+                 ============================================ -->
+            <h2>3.1 Estructura del Poder Congresional</h2>
+            
+            <div class="section-intro">
+                <strong>Pregunta central:</strong> ¿Cómo se organiza el poder en 257 diputados 
+                de 24 provincias? ¿Qué pesa más: la ideología o el territorio?
+            </div>
+
+            <h3>3.1.1 Comparación fundamental: Ideología vs Territorio</h3>
+            
+            <p>
+                Una pregunta central en ciencia política: <strong>¿Los legisladores votan 
+                con sus bloques ideológicos o con sus provincias?</strong> El análisis cuantitativo 
+                mediante Item Response Theory proporciona una respuesta clara y medible.
+            </p>
+
+            <figure class="visualization">
+                <img src="04_comparacion_familia_vs_provincia.png" 
+                     alt="Cohesión: Familias ideológicas vs Provincias">
+                <figcaption>
+                    <strong>Figura 3.1:</strong> Cohesión promedio: Familias ideológicas (bloques) 
+                    vs Provincias. La cohesión se mide como la desviación estándar (SD) de los 
+                    Ideal Points (IDP) dentro de cada agrupación. Menores valores = mayor cohesión.
+                </figcaption>
+            </figure>
+
+            <div class="data-box">
+                <pre>
+Cohesión promedio (medida por SD de IDPs):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Agrupación              SD media    Ratio vs base
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Familias ideológicas    0.315       Base (1.00x)
+Provincias              0.965       3.06x 🔴
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Interpretación:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+→ Los diputados son 3x MÁS cohesionados por IDEOLOGÍA 
+  que por PROVINCIA
+→ Votan con sus bloques, no con sus territorios
+→ El Congreso argentino está estructurado ideológicamente
+                </pre>
+            </div>
+
+            <div class="callout callout-finding">
+                <h4>📊 Hallazgo Estructural #1: Predominio Ideológico</h4>
+                <p>
+                    <strong>El análisis de cohesión revela que la ideología (bloque) es un predictor 
+                    3 veces más fuerte del comportamiento de votación que el territorio (provincia).</strong>
+                </p>
+                <p class="mt-lg">
+                    Este hallazgo contradice la narrativa popular de que los diputados "defienden 
+                    sus provincias". En realidad, la disciplina de bloque ideológico domina ampliamente 
+                    sobre consideraciones territoriales.
+                </p>
+                <p>
+                    <strong>Implicación:</strong> Para predecir cómo votará un diputado en un proyecto 
+                    de ley, es más útil saber su bloque ideológico que su provincia de origen.
+                </p>
+            </div>
+
+            <figure class="visualization">
+                <img src="03_boxplot_idp_por_familia.png" 
+                     alt="Distribución de IDPs por familia ideológica">
+                <figcaption>
+                    <strong>Figura 3.2:</strong> Distribución de Ideal Points (IDP) por familia 
+                    ideológica 2022-2025. Los boxplots muestran la dispersión interna de cada familia. 
+                    Cajas más compactas = mayor cohesión interna.
+                </figcaption>
+            </figure>
+
+            <h4>Ranking de cohesión por familia ideológica (2022-2025)</h4>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Familia Ideológica</th>
+                            <th>SD</th>
+                            <th>Status</th>
+                            <th>Ejemplos de Bloques</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🥇 1</td>
+                            <td><strong>Liberalismo (2024)</strong></td>
+                            <td><strong>0.171</strong></td>
+                            <td><span class="badge badge-optimal">⭐ Óptimo</span></td>
+                            <td>LLA (antes de fragmentarse)</td>
+                        </tr>
+                        <tr>
+                            <td>🥈 2</td>
+                            <td><strong>Izquierda</strong></td>
+                            <td><strong>0.198</strong></td>
+                            <td><span class="badge badge-optimal">⭐ Muy bueno</span></td>
+                            <td>FIT-U</td>
+                        </tr>
+                        <tr>
+                            <td>🥉 3</td>
+                            <td><strong>Peronismo Federal</strong></td>
+                            <td><strong>0.246</strong></td>
+                            <td><span class="badge badge-low">✓ Bueno</span></td>
+                            <td>UxP (2024)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Centro-Izquierda</strong></td>
+                            <td><strong>0.289</strong></td>
+                            <td><span class="badge badge-low">✓ Aceptable</span></td>
+                            <td>Coalición Cívica</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Peronismo Provincial</strong></td>
+                            <td><strong>0.327</strong></td>
+                            <td><span class="badge badge-moderate">~ Moderado</span></td>
+                            <td>Bloques provinciales</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Centro-Derecha</strong></td>
+                            <td><strong>0.412</strong></td>
+                            <td><span class="badge badge-high">⚠️ Frágil</span></td>
+                            <td>UCR + aliados</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>Juntos por el Cambio</strong></td>
+                            <td><strong>0.465</strong></td>
+                            <td><span class="badge badge-critical">🔴 Fragmentado</span></td>
+                            <td>PRO + Evolución</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ============================================
+                 3.1.2 Análisis de Componentes Principales (PCA)
+                 ============================================ -->
+            <h3>3.1.2 Análisis de Componentes Principales: La geometría del poder</h3>
+            
+            <p>
+                El poder legislativo es multidimensional: los legisladores tienen múltiples 
+                métricas de influencia (degree, betweenness, closeness, PageRank, etc.). 
+                <strong>¿Existe una estructura subyacente?</strong> El PCA revela que sí: 
+                dos dimensiones explican el 81% de la variación.
+            </p>
+
+            <figure class="visualization">
+                <img src="01_scree_plot.png" 
+                     alt="Scree plot - Varianza explicada por componente">
+                <figcaption>
+                    <strong>Figura 3.3:</strong> Gráfico de sedimentación (scree plot): 
+                    varianza explicada por cada componente principal. El "codo" en PC2 
+                    indica que las dos primeras componentes capturan la mayor parte de la información.
+                </figcaption>
+            </figure>
+
+            <div class="data-box">
+                <pre>
+Análisis de Componentes Principales (PCA) sobre 8 métricas de red:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Métricas analizadas:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Degree (cantidad de conexiones directas)
+• Betweenness (intermediación entre grupos)
+• Closeness (cercanía al resto de la red)
+• Eigenvector Centrality (prestigio por conexiones de calidad)
+• PageRank (autoridad en la red)
+• Collective Influence (capacidad de movilización)
+• Clustering Coefficient (densidad local de red)
+• Average Neighbor Degree (calidad de conexiones)
+
+Varianza explicada:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Componente    Varianza    Acumulada    Interpretación
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PC1           54.3%       54.3%        "Centralidad"
+PC2           26.8%       81.1% ⭐     "Influencia"
+PC3            8.7%       89.8%        ---
+PC4-PC8       10.2%      100%          Residual
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+→ Conclusión: DOS dimensiones explican el 81% del poder legislativo
+                </pre>
+            </div>
+
+            <figure class="visualization">
+                <img src="02_biplot_pc1_pc2.png" 
+                     alt="Biplot PC1 vs PC2">
+                <figcaption>
+                    <strong>Figura 3.4:</strong> Proyección de legisladores en las dos primeras 
+                    componentes principales (81% varianza explicada). Los vectores muestran cómo 
+                    las métricas originales se proyectan en este espacio bidimensional.
+                </figcaption>
+            </figure>
+
+            <h4>Interpretación de las dos dimensiones principales</h4>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Loadings más altos</th>
+                            <th>Interpretación conceptual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PC1<br>(54.3%)</strong></td>
+                            <td>
+                                • Degree (+0.89)<br>
+                                • Closeness (+0.85)<br>
+                                • Betweenness (+0.78)
+                            </td>
+                            <td>
+                                <strong>"Central vs Periférico"</strong><br>
+                                Qué tan conectado estás en la red general. 
+                                Mide posición estructural básica en el grafo.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>PC2<br>(26.8%)</strong></td>
+                            <td>
+                                • Collective Influence (+0.81)<br>
+                                • PageRank (+0.76)<br>
+                                • Eigenvector (+0.72)
+                            </td>
+                            <td>
+                                <strong>"Influencia vs Prestigio"</strong><br>
+                                Capacidad de movilizar otros legisladores vs 
+                                ser referenciado por otros. Mide poder efectivo.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-finding">
+                <h4>💡 Hallazgo Estructural #2: Bidimensionalidad del Poder</h4>
+                <p>
+                    <strong>El poder legislativo NO es caótico ni arbitrario: tiene una estructura 
+                    bidimensional clara y matemáticamente verificable.</strong>
+                </p>
+                <p class="mt-lg">
+                    <strong>Eje 1 (54%):</strong> Central ←→ Periférico<br>
+                    <em>¿Qué tan integrado estás en la red de co-votaciones?</em>
+                </p>
+                <p>
+                    <strong>Eje 2 (27%):</strong> Influencer ←→ Broker<br>
+                    <em>¿Movilizas tu entorno o intermedias entre grupos?</em>
+                </p>
+                <p class="mt-lg">
+                    <strong>Validación cruzada:</strong> Esta estructura bidimensional del PCA 
+                    valida perfectamente la tipología del Acto II:
+                </p>
+                <ul>
+                    <li><strong>Influencers:</strong> Alto PC2, variable PC1</li>
+                    <li><strong>Brokers:</strong> Alto PC1, variable PC2</li>
+                    <li><strong>Híbridos:</strong> Alto en AMBOS</li>
+                    <li><strong>Periféricos:</strong> Bajo en AMBOS</li>
+                </ul>
+                <p class="mt-lg">
+                    <strong>Implicación metodológica:</strong> No es solo una clasificación 
+                    arbitraria, es una estructura real en los datos que emerge del análisis 
+                    matemático riguroso.
+                </p>
+            </div>
+
+            <!-- ============================================
+                 3.2 MÉTODOS UTILIZADOS
+                 ============================================ -->
+            <h2>3.2 Métodos Utilizados: Cómo capturamos el poder legislativo</h2>
+            
+            <div class="section-intro">
+                <strong>Objetivo:</strong> Explicar los tres métodos cuantitativos principales 
+                (IRT, SNA, PCA) de manera accesible para audiencia no-técnica, incluyendo sus 
+                ventajas y limitaciones.
+            </div>
+
+            <!-- ============================================
+                 3.2.1 Item Response Theory (IRT)
+                 ============================================ -->
+            <div class="method-card">
+                <h4>🧮 Método #1: Item Response Theory (IRT)</h4>
+                
+                <div class="concept">
+                    <h5>¿Qué es IRT?</h5>
+                    <p>
+                        <strong>Analogía:</strong> Como un examen de matemática donde:
+                    </p>
+                    <ul>
+                        <li>Las <strong>preguntas</strong> = proyectos de ley</li>
+                        <li>Los <strong>estudiantes</strong> = legisladores</li>
+                        <li>Las <strong>respuestas</strong> (A favor/Contra) = votos</li>
+                    </ul>
+                    <p class="mt-lg">
+                        <strong>IRT estima simultáneamente:</strong>
+                    </p>
+                    <ol>
+                        <li><strong>Dificultad de cada pregunta:</strong> ¿Ley ideológicamente divisiva?</li>
+                        <li><strong>Habilidad de cada estudiante:</strong> Posición ideológica del legislador</li>
+                    </ol>
+                    <p class="mt-lg">
+                        <strong>Resultado:</strong> Un número por legislador → <strong>Ideal Point (IDP)</strong>
+                    </p>
+                    <ul>
+                        <li>Valores negativos = Izquierda</li>
+                        <li>Valores positivos = Derecha</li>
+                        <li>Magnitud = intensidad ideológica</li>
+                    </ul>
+                </div>
+
+                <h5>Proceso técnico (simplificado)</h5>
+                
+                <div class="data-box">
+                    <pre>
+INPUT: Matriz de votaciones (legisladores × proyectos)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            Ley1    Ley2    Ley3    Ley4
+Kirchner    ✓       ✓       ✗       ✓
+Ritondo     ✗       ✗       ✓       ✗
+Santilli    ✗       ✗       ✓       ✗
+
+↓ Aplicar IRT (paquete R: wnominate)
+
+OUTPUT: Coordenadas ideológicas
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Legislador    IDP       Posición
+Kirchner      -0.856    Izquierda
+Ritondo       +0.821    Derecha
+Santilli      +0.844    Derecha
+
+→ De 100+ votos a UN número interpretable por legislador
+                    </pre>
+                </div>
+
+                <div class="advantages">
+                    <h5>✅ Ventajas</h5>
+                    <ul>
+                        <li>Captura patrones de votación consistentes en el tiempo</li>
+                        <li>Permite comparar legisladores entre períodos diferentes</li>
+                        <li>Reduce dimensionalidad: 100+ votos → 1 número por legislador</li>
+                        <li>Método estándar en ciencia política comparada (validado internacionalmente)</li>
+                        <li>Robusto ante datos faltantes (legisladores ausentes en algunas votaciones)</li>
+                    </ul>
+                </div>
+
+                <div class="limitations">
+                    <h5>⚠️ Limitaciones Críticas</h5>
+                    <ul>
+                        <li>
+                            <strong>Captura COMPORTAMIENTO, no necesariamente IDEOLOGÍA:</strong> 
+                            IRT mide cómo votan los legisladores, no por qué lo hacen ni qué creen.
+                        </li>
+                        <li>
+                            <strong>Internas brutales distorsionan métricas:</strong> 
+                            Caso Pagano (IDP izquierda, ideología libertaria) muestra que 
+                            conflictos personales/estratégicos pueden dominar señal ideológica.
+                        </li>
+                        <li>
+                            <strong>Requiere validación cualitativa obligatoria:</strong> 
+                            Los números son precisos matemáticamente, pero la interpretación 
+                            correcta necesita conocer el contexto político.
+                        </li>
+                        <li>
+                            <strong>Asume unidimensionalidad:</strong> 
+                            Reduce toda la complejidad política a un eje izquierda-derecha. 
+                            Puede perder matices (libertarismo social vs económico, por ejemplo).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 3.2.2 Social Network Analysis (SNA)
+                 ============================================ -->
+            <div class="method-card">
+                <h4>🕸️ Método #2: Social Network Analysis (SNA)</h4>
+                
+                <div class="concept">
+                    <h5>¿Qué es SNA?</h5>
+                    <p>
+                        <strong>Analogía:</strong> Imagina el Congreso como Facebook/Twitter/LinkedIn:
+                    </p>
+                    <ul>
+                        <li><strong>Nodos</strong> = Legisladores</li>
+                        <li><strong>Enlaces</strong> = Co-votan juntos frecuentemente</li>
+                        <li><strong>Métricas</strong> = Distintos tipos de "popularidad" o "influencia"</li>
+                    </ul>
+                    <p class="mt-lg">
+                        <strong>SNA mide cómo el poder fluye por la red de relaciones legislativas.</strong>
+                    </p>
+                </div>
+
+                <h5>Métricas principales utilizadas</h5>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>¿Qué mide?</th>
+                                <th>Analogía cotidiana</th>
+                                <th>Ejemplo político</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Degree</strong></td>
+                                <td>Cantidad de conexiones directas</td>
+                                <td>Cantidad de amigos en Facebook</td>
+                                <td>Legislador con muchos aliados votando igual</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Betweenness</strong></td>
+                                <td>Intermediación entre grupos</td>
+                                <td>El amigo que conecta grupos distintos</td>
+                                <td>Broker entre oficialismo y oposición</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Closeness</strong></td>
+                                <td>Cercanía al resto de la red</td>
+                                <td>Qué tan rápido llegas a cualquier persona</td>
+                                <td>Legislador con acceso rápido a todos los bloques</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PageRank</strong></td>
+                                <td>Prestigio por conexiones de calidad</td>
+                                <td>Tener seguidores influyentes en Twitter</td>
+                                <td>Legislador seguido por referentes políticos</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Collective Influence</strong></td>
+                                <td>Capacidad de movilizar entorno</td>
+                                <td>Cuánta gente puedes mover en 2 pasos</td>
+                                <td>Influencer que mueve a todo su bloque</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5>Proceso técnico (simplificado)</h5>
+
+                <div class="data-box">
+                    <pre>
+INPUT: Matriz de co-votaciones (similaridad de votos)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            Kirchner    Ritondo    Santilli
+Kirchner    ---         12%        15%
+Ritondo     12%         ---        87%
+Santilli    15%         87%        ---
+
+↓ Construir grafo ponderado + Calcular métricas de red
+
+OUTPUT: Perfil de poder multidimensional
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Legislador    CI      Betw.    Tipología
+Kirchner      1512    0.043    Influencer (alto CI, bajo Bw)
+Ritondo       1408    0.052    Influencer
+Pichetto      743     0.113    Broker (bajo CI, alto Bw)
+
+→ Cada métrica captura una dimensión distinta del poder
+                    </pre>
+                </div>
+
+                <div class="advantages">
+                    <h5>✅ Ventajas</h5>
+                    <ul>
+                        <li>
+                            <strong>Multidimensional:</strong> Captura múltiples aspectos del poder 
+                            (influencia, intermediación, prestigio, etc.)
+                        </li>
+                        <li>
+                            <strong>Revela estructura oculta:</strong> Identifica comunidades, 
+                            brokers clave, y legisladores puente
+                        </li>
+                        <li>
+                            <strong>Complementa IRT:</strong> Mientras IRT da posición ideológica, 
+                            SNA mide poder efectivo en la red
+                        </li>
+                        <li>
+                            <strong>Predictivo:</strong> Métricas como CI predicen qué tan 
+                            influyente será un legislador en negociaciones
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="limitations">
+                    <h5>⚠️ Limitaciones</h5>
+                    <ul>
+                        <li>
+                            <strong>Correlación moderada entre métricas:</strong> 
+                            CI vs Betweenness r = 0.58 → miden cosas distintas pero relacionadas
+                        </li>
+                        <li>
+                            <strong>Sensible a definición de enlaces:</strong> 
+                            Usar co-votación simple vs ponderada por importancia de ley puede 
+                            cambiar resultados
+                        </li>
+                        <li>
+                            <strong>No captura poder informal:</strong> 
+                            Relaciones extra-parlamentarias (lobbying, medios) no se reflejan 
+                            en redes de co-votación
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="callout callout-method mt-lg">
+                    <h4>🔍 Observación Metodológica Crítica</h4>
+                    <p>
+                        <strong>Correlación CI vs Betweenness: r = 0.58 (moderada)</strong>
+                    </p>
+                    <p class="mt-lg">
+                        <strong>Conclusión:</strong> Miden aspectos DIFERENTES del poder → 
+                        Necesitamos AMBAS métricas para entender el poder legislativo completamente.
+                    </p>
+                    <ul class="mt-lg">
+                        <li>Un legislador puede ser influyente SIN ser broker (Máximo Kirchner)</li>
+                        <li>Un legislador puede ser broker SIN ser influyente (algunos radicales)</li>
+                        <li>Los híbridos (alto en ambos) son raros y extremadamente valiosos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 3.2.3 Principal Component Analysis (PCA)
+                 ============================================ -->
+            <div class="method-card">
+                <h4>📊 Método #3: Principal Component Analysis (PCA)</h4>
+                
+                <div class="concept">
+                    <h5>¿Qué es PCA?</h5>
+                    <p>
+                        <strong>El problema:</strong> Tienes 8 variables de red simultáneas 
+                        (Degree, Betweenness, Closeness, PageRank, CI, Eigenvector, Clustering, 
+                        Avg Neighbor Degree). Es imposible visualizar 8 dimensiones a la vez.
+                    </p>
+                    <p class="mt-lg">
+                        <strong>Lo que PCA hace:</strong> Encuentra las 2-3 "direcciones principales" 
+                        en los datos que capturan la mayor variación. Es como proyectar una escultura 
+                        3D en una foto 2D, pero eligiendo el mejor ángulo que preserve más información.
+                    </p>
+                    <p class="mt-lg">
+                        <strong>Resultado:</strong> Un mapa 2D (PC1 vs PC2) que preserva el 81% 
+                        de la información original de 8 dimensiones.
+                    </p>
+                </div>
+
+                <h5>¿Cómo funciona? (sin matemática compleja)</h5>
+
+                <div class="data-box">
+                    <pre>
+Proceso conceptual de PCA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. INPUT: Matriz de datos (257 legisladores × 8 métricas)
+   
+2. PASO 1: Estandarizar variables
+   → Todas las métricas en misma escala (media=0, sd=1)
+   
+3. PASO 2: Calcular matriz de correlaciones
+   → ¿Qué variables se mueven juntas?
+   
+4. PASO 3: Encontrar "direcciones" de máxima variación
+   → PC1 = dirección donde los datos varían MÁS
+   → PC2 = dirección perpendicular con 2da mayor variación
+   → PC3, PC4, etc.
+   
+5. OUTPUT: Componentes principales + % varianza explicada
+   → PC1 explica 54.3% de variación
+   → PC2 explica 26.8% adicional
+   → Total PC1+PC2: 81.1% ⭐
+
+→ Redujimos 8D a 2D perdiendo solo 19% de información
+                    </pre>
+                </div>
+
+                <div class="advantages">
+                    <h5>✅ Utilidades de PCA</h5>
+                    <ul>
+                        <li>
+                            <strong>Visualización:</strong> Permite graficar relaciones complejas 
+                            multidimensionales en 2D interpretable
+                        </li>
+                        <li>
+                            <strong>Validación:</strong> Confirma que la tipología Influencer/Broker/Híbrido 
+                            es real, no arbitraria (emerge matemáticamente de los datos)
+                        </li>
+                        <li>
+                            <strong>Simplificación:</strong> Identifica qué variables originales 
+                            importan más (loadings altos)
+                        </li>
+                        <li>
+                            <strong>Reducción de ruido:</strong> Las componentes capturan señal 
+                            sistemática, filtran variación aleatoria
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="limitations">
+                    <h5>⚠️ Limitaciones</h5>
+                    <ul>
+                        <li>
+                            <strong>Asume linealidad:</strong> 
+                            PCA captura relaciones lineales entre variables. 
+                            Relaciones no-lineales pueden perderse.
+                        </li>
+                        <li>
+                            <strong>Interpretación subjetiva:</strong> 
+                            Los componentes principales son combinaciones matemáticas de variables. 
+                            Nombrarlos ("Centralidad", "Influencia") requiere interpretación humana.
+                        </li>
+                        <li>
+                            <strong>Pérdida de información:</strong> 
+                            Aunque PC1+PC2 explican 81%, se pierde 19% de variación. 
+                            Algunos patrones sutiles pueden no capturarse.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 3.3 HALLAZGOS COMPLEMENTARIOS
+                 ============================================ -->
+            <h2>3.3 Hallazgos Complementarios</h2>
+            
+            <p>
+                Más allá de las dos historias principales (fragmentación de LLA y pérdida de experiencia), 
+                el análisis reveló otros patrones relevantes:
+            </p>
+
+            <h3>3.3.1 Evolución del Kirchnerismo (2022-2025)</h3>
+
+            <div class="data-box">
+                <pre>
+Cohesión de Unión por la Patria (SD de IDPs):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2022:  SD = 0.400  🔴 Disperso (post-derrota electoral)
+2023:  SD = 0.312     ✓ Unificación en marcha
+2024:  SD = 0.246  ⭐ Muy cohesionado (oposición unida)
+2025:  SD = 0.339     ~ Leve aumento (tensiones internas)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Interpretación:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+→ 2022: Post-derrota, dispersión ideológica interna
+→ 2023-2024: Unificación como oposición cohesionada
+→ 2025: Leve fragmentación (¿inicio de internas 2027?)
+                </pre>
+            </div>
+
+            <h3>3.3.2 Perfiles de bloques por tipología (2025)</h3>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bloque</th>
+                            <th>% Influencers</th>
+                            <th>% Brokers</th>
+                            <th>% Híbridos</th>
+                            <th>Perfil dominante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Coalición Cívica</strong></td>
+                            <td>0%</td>
+                            <td class="text-success">100%</td>
+                            <td>0%</td>
+                            <td>Negociadores puros</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Liga del Interior</strong></td>
+                            <td class="text-warning">66.7%</td>
+                            <td>16.7%</td>
+                            <td>16.6%</td>
+                            <td>Representación territorial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PRO</strong></td>
+                            <td>42%</td>
+                            <td>31%</td>
+                            <td>27%</td>
+                            <td>Mixto equilibrado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UxP</strong></td>
+                            <td>38%</td>
+                            <td>24%</td>
+                            <td>38%</td>
+                            <td>Alta proporción de Híbridos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LLA</strong></td>
+                            <td>28%</td>
+                            <td>12%</td>
+                            <td>8%</td>
+                            <td>Mayoritariamente Periféricos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>3.3.3 Provincias más y menos cohesionadas (2022-2025)</h3>
+
+            <div class="data-box">
+                <pre>
+Cohesión provincial (SD de IDPs, promedio 2022-2025):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MÁS cohesionadas (menor SD):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Tierra del Fuego:  SD = 0.421  (bloque monolítico)
+2. Tucumán:           SD = 0.487  (hegemonía provincial)
+3. San Luis:          SD = 0.512  (dominio local)
+
+MENOS cohesionadas (mayor SD):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Buenos Aires:      SD = 1.234 🔴 (máxima diversidad)
+2. CABA:              SD = 1.087 🔴 (fragmentación urbana)
+3. Córdoba:           SD = 0.987    (diversidad ideológica)
+
+→ Conclusión: Provincias grandes y urbanas son menos cohesionadas
+              (más diversidad ideológica interna)
+                </pre>
+            </div>
+
+            <h3>3.3.4 Estabilidad temporal de IDPs (2022-2025)</h3>
+
+            <div class="data-box">
+                <pre>
+Análisis de cambios en Ideal Points (IDP) a lo largo del tiempo:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Distribución de cambios (Δ IDP):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 76% de legisladores: Δ IDP < 0.3  ✓ Posición ESTABLE
+• 18% de legisladores: Δ IDP 0.3-0.6  ~ Cambios MODERADOS
+• 6% de legisladores:  Δ IDP > 0.6  🔴 Cambios EXTREMOS
+
+→ Los cambios extremos (6%) son casos de análisis especial:
+  - Absorciones estratégicas (PRO → LLA)
+  - Fracturas radicales (UCR → Oposición)
+  - Internas brutales (Pagano, Menem)
+
+→ La mayoría (76%) mantiene posición ideológica estable,
+  validando que IRT captura algo real y persistente
+                </pre>
+            </div>
+
+            <div class="callout callout-success">
+                <h4>✅ Validación del Modelo IRT</h4>
+                <p>
+                    <strong>El hecho de que 76% de los legisladores mantengan posiciones 
+                    ideológicas estables (Δ IDP < 0.3) a lo largo de 3 años valida que IRT 
+                    está capturando algo real y consistente, no ruido aleatorio.</strong>
+                </p>
+                <p class="mt-lg">
+                    Los cambios extremos (6%) son precisamente los casos más interesantes para 
+                    análisis cualitativo, porque indican eventos políticos significativos 
+                    (fusiones, rupturas, conflictos internos).
+                </p>
+            </div>
+
+            <!-- ============================================
+                 TRANSICIÓN AL CIERRE
+                 ============================================ -->
+            <div class="section-intro mt-lg">
+                <p>
+                    <strong>Hasta aquí:</strong> Exploramos la estructura del poder (ideología > territorio), 
+                    su geometría bidimensional (PCA 81%), y los métodos que nos permitieron medirlo 
+                    (IRT, SNA, PCA).
+                </p>
+                <p class="mt-lg">
+                    Ahora es momento de cerrar: ¿Qué aprendimos sobre política argentina? 
+                    ¿Qué lecciones metodológicas nos llevamos sobre ciencia de datos? 
+                    ¿Cómo integramos lo cuantitativo con lo cualitativo?
+                </p>
+                <p class="mt-lg">
+                    <strong>Pasemos a las conclusiones finales...</strong>
+                </p>
+            </div>
+
+            <!-- ============================================
+                 NAVEGACIÓN
+                 ============================================ -->
+            <div class="nav-section">
+                <a href="index.html" class="nav-button">← Pérdida Experiencia</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
